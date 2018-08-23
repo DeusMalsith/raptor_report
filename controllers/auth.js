@@ -40,17 +40,19 @@ router.post('/signup', function(req, res) {
 				failureFlash: 'BIG PROBLEM MY GUY!'
 			})(req, res);
 		} else { // User already has a login
-			// Send user an error message
+			req.flash('error', 'Please login');
 			res.redirect('/auth/login');
 		}
 	}).catch(function(err) {
-		console.log(err);
-		res.send(err);
+		req.flash('error', err.message)
+		res.redirect('/auth/signup');
 	});
 });
 
 router.get('/logout', function(req, res) {
-	res.send('logout page');
+	req.logout();
+	req.flash('success', 'Logout successful!');
+	res.redirect('/');
 });
 
 module.exports = router;
