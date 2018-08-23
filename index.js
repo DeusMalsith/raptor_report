@@ -13,6 +13,10 @@ app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Include controllers
+app.use('/auth', require('./controllers/auth'));
+app.use('/profile', require('./controllers/profile'));
+
 // Define routes
 app.get('/', function(req, res) {
 	res.render('home');
