@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Define routes
 app.get('/', function(req, res) {
-	res.send('HOME PAGE');
+	res.render('home');
 });
 
 // Listen on port 3000
